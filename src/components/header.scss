@@ -1,0 +1,38 @@
+.header-container {
+  background-color: rgb(197, 164, 164);
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__logo img {
+    width: 150px;
+    height: 100px;
+  }
+  &__search {
+    display: flex;
+    justify-content: space-around;
+    gap: 200px;
+    align-items: center;
+  }
+  &__search input {
+    height: 30px;
+    width: 950px;
+    margin: 10px;
+    border-radius: 20px;
+  }
+  &__favoritesPhotoLink {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  &__button {
+    border-radius: 50px;
+    background-color: rgb(197, 164, 164);
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(132, 109, 109);
+      color: white;
+    }
+  }
+}
