@@ -5,9 +5,7 @@ import { fetchPhotos } from "../slices/photoSlice";
 import Masonry from "react-masonry-css";
 import { useSelector } from "react-redux";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import EditIcon from "@mui/icons-material/Edit";
-// import { Link } from "react-router-dom";
+import { addToFavorites } from "../slices/favPhotoSlice";
 
 const Home = () => {
   const allPhotos = useSelector((store) => store.photos);
@@ -17,9 +15,15 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchPhotos());
   }, [dispatch]);
+
+  const handleAddFavorites = (element) => {
+    dispatch(addToFavorites(element));
+    console.log("you clicked");
+  };
+
   const breakpoint = {
     default: 3,
-    740: 1,
+    850: 1,
   };
 
   return (
@@ -28,26 +32,21 @@ const Home = () => {
         <Masonry breakpointCols={breakpoint} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
           {allPhotos.listPhotos.map((e) => (
             <div className="photos-container">
-              <img src={e.urls.small} alt="" />
+              <img key={e.id} src={e.urls.small} alt="" />
               <div className="hover-action-icons">
                 <span className="icon-border-heart">
                   {/* <FavoriteBorderIcon className="heart" /> */}
-                  <FavoriteBorderIcon />
+                  <FavoriteBorderIcon onClick={() => handleAddFavorites(e)} />
                 </span>
                 <div className="container-icon-trash">
-                  <span className="icon-trash">
-                    <DeleteOutlineIcon />
-                  </span>
-                  <span className="icon-pencil">
-                    <EditIcon />
-                  </span>
+                  <span className="icon-trash">{/* <DeleteOutlineIcon onClick={handleClick} /> */}</span>
+                  <span className="icon-pencil">{/* <EditIcon /> */}</span>
                 </div>
               </div>
             </div>
           ))}
         </Masonry>
       </div>
-      <masonry></masonry>
     </>
   );
 };

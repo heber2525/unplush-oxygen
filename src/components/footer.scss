@@ -1,0 +1,17 @@
+.footer {
+  background-color: rgb(218, 199, 209);
+  height: 200px;
+  &__list {
+    text-align: center;
+    padding-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(142, 134, 134);
+    gap: 10px;
+    font-weight: bold;
+  }
+  &__list li {
+    display: flex;
+  }
+}

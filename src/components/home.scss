@@ -1,5 +1,4 @@
 .home-container {
-  width: 100%;
   margin: 0px auto;
 }
 
@@ -11,7 +10,7 @@
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 45px; /* gutter size */
+  // padding-left: 45px; /* gutter size */
   background-clip: padding-box;
   margin: 30px;
 }
@@ -19,9 +18,11 @@
 /* Style your items */
 .my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
-  background: rgb(255, 255, 255);
+  background: rgb(156, 144, 144);
   margin-bottom: 30px;
-  // object-fit: cover;
+}
+.my-masonry-grid_column img {
+  object-fit: cover;
 }
 
 .photos-container {
