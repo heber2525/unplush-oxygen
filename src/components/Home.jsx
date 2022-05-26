@@ -18,7 +18,6 @@ const Home = () => {
 
   const handleAddFavorites = (element) => {
     dispatch(addToFavorites(element));
-    console.log("you clicked");
   };
 
   const breakpoint = {
@@ -30,18 +29,13 @@ const Home = () => {
     <>
       <div className="home-container">
         <Masonry breakpointCols={breakpoint} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-          {allPhotos.listPhotos.map((e) => (
-            <div className="photos-container">
+          {allPhotos.listPhotos.map((e, index) => (
+            <div key={index} className="photos-container">
               <img key={e.id} src={e.urls.small} alt="" />
               <div className="hover-action-icons">
                 <span className="icon-border-heart">
-                  {/* <FavoriteBorderIcon className="heart" /> */}
                   <FavoriteBorderIcon onClick={() => handleAddFavorites(e)} />
                 </span>
-                <div className="container-icon-trash">
-                  <span className="icon-trash">{/* <DeleteOutlineIcon onClick={handleClick} /> */}</span>
-                  <span className="icon-pencil">{/* <EditIcon /> */}</span>
-                </div>
               </div>
             </div>
           ))}

@@ -6,7 +6,8 @@ function addPhoto(photos) {
 
 function getPhotos() {
   const arrayFromStorage = localStorage.getItem("listFavPhotos");
-  return arrayFromStorage.length > 0 ? JSON.parse(arrayFromStorage) : [];
+
+  return arrayFromStorage ? JSON.parse(arrayFromStorage) : [];
 }
 
 export const favPhotoSlice = createSlice({
@@ -28,9 +29,9 @@ export const favPhotoSlice = createSlice({
       state.listFavPhotos = newFavArray;
     },
     editPhoto: (state, action) => {
-      const newPhotos = [...state.listFavPhotos];
-      newPhotos[action.index].description = action.description;
-      state.listFavPhotos = newPhotos;
+      const newLisOfPhotos = [...state.listFavPhotos];
+      newLisOfPhotos[action.index].description = action.description;
+      state.listFavPhotos = newLisOfPhotos;
       addPhoto(state.listFavPhotos);
     },
     // addPhoto: (state, action) => {

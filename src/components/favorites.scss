@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .favorites-container {
   margin: 0px auto;
 }
@@ -6,11 +10,11 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  // margin-left: -80px; /* gutter size offset */
+  margin-left: -80px; /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
-  // padding-left: 45px; /* gutter size */
+  padding-left: 45px; /* gutter size */
   background-clip: padding-box;
   margin: 30px;
 }
@@ -18,7 +22,7 @@
 /* Style your items */
 .my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
-  background: rgb(156, 144, 144);
+  background: rgb(255, 255, 255);
   margin-bottom: 30px;
 }
 .my-masonry-grid_column img {
@@ -40,11 +44,11 @@
 //   display: block;
 // }
 .icon-border-heart {
-  // position: absolute;
+  position: absolute;
 
   top: 10px;
   right: 30px;
-  color: rgb(247, 44, 44);
+  color: rgb(0, 0, 0);
   cursor: pointer;
 }
 
@@ -52,7 +56,7 @@
   // position: absolute;
   bottom: 10px;
   right: 30px;
-  color: rgb(241, 23, 23);
+  color: rgb(0, 0, 0);
   display: flex;
   gap: 20px;
 }
@@ -63,4 +67,36 @@
 .icon-trash :hover {
   color: rgb(220, 160, 207);
   cursor: pointer;
+}
+.author {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
+  gap: 10px;
+
+  &__image {
+    width: 40px;
+    border-radius: 50%;
+  }
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__portfolio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__likes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.delete-icon {
+  color: black;
+}
+.edit-icon {
+  color: black;
 }
