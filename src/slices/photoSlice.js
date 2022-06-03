@@ -1,11 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchPhotos = createAsyncThunk("photos/getPhotos", async () => {
-  const response = await axios.get(
-    "https://api.unsplash.com/photos/?client_id=wYlJu1LRxSFyU5boA7mw5hEM8OVejzY-wHFwlTBZYY8&per_page=50"
-  );
-  return response.data;
+export const fetchPhotos = createAsyncThunk("photos/getPhotos", async (inputData) => {
+  const urlPassword = "wYlJu1LRxSFyU5boA7mw5hEM8OVejzY-wHFwlTBZYY8";
+  let URL;
+  if (inputData && inputData.length) {
+    URL = `https://api.unsplash.com/search/photos?client_id=${urlPassword}&query=${inputData}&per_page=20`;
+  } else {
+    URL = `https://api.unsplash.com/photos/random?client_id=${urlPassword}&count=20`;
+  }
+  const response = await axios.get(URL);
+  if (inputData && inputData.length) {
+    return response.data.results;
+  } else {
+    return response.data;
+  }
 });
 
 export const photoSlice = createSlice({
@@ -17,6 +26,9 @@ export const photoSlice = createSlice({
     setListPhotos: (state, action) => {
       state.listPhotos = action.payload;
     },
+    setFilteredPhotos: (state, action) => {
+      state.filteredPhotos = action.payload;
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchPhotos.fulfilled, (state, action) => {
@@ -25,7 +37,7 @@ export const photoSlice = createSlice({
   },
 });
 
-export const { setListPhotos } = photoSlice.actions;
+export const { setListPhotos, setFilteredPhotos, listPhotos } = photoSlice.actions;
 export default photoSlice.reducer;
 
 // export const addPhoto = (photos) => {

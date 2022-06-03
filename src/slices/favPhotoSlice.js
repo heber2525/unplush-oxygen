@@ -30,28 +30,14 @@ export const favPhotoSlice = createSlice({
     },
     editPhoto: (state, action) => {
       const newLisOfPhotos = [...state.listFavPhotos];
-      newLisOfPhotos[action.index].description = action.description;
+      const index = newLisOfPhotos.findIndex((photo) => photo.id === action.payload.id);
+      newLisOfPhotos[index].description = action.payload.description;
       state.listFavPhotos = newLisOfPhotos;
       addPhoto(state.listFavPhotos);
     },
-    // addPhoto: (state, action) => {
-    //   state.listFavPhotos = action.payload;
-    // },
   },
-  // extraReducers(builder) {
-  //   builder.addCase(fetchPhotos.fulfilled, (state, action) => {
-  //     state.listFavPhotos = action.payload;
-  //   });
-  // },
 });
 export const { addToFavorites, removeFromFavorites, editPhoto, setFavPhotos } = favPhotoSlice.actions;
-// export const favorites = (state) => state.favorite_photos.photos;
+export const favorites = (state) => state.favPhotos.listFavPhotos;
 
 export default favPhotoSlice.reducer;
-
-// import {
-//   favourites
-// } from './photosSlice'
-// const photos = useSelector(favourites);
-
-// Photos.jsx

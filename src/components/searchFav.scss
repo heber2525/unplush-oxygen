@@ -1,0 +1,30 @@
+.search {
+  &__search {
+    display: flex;
+    justify-content: space-around;
+    gap: 200px;
+    align-items: center;
+  }
+  &__input {
+    height: 30px;
+    width: 750px;
+    margin: 10px;
+    border-radius: 20px;
+  }
+  &__button-submit {
+    background-color: rgb(196, 179, 179);
+    padding: 7px;
+    border-radius: 15px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(132, 109, 109);
+      color: white;
+    }
+  }
+  &__select {
+    height: 30px;
+    width: 70px;
+    margin: 20px;
+    border-radius: 20px;
+  }
+}

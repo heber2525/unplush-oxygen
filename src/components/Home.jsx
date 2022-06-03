@@ -6,6 +6,7 @@ import Masonry from "react-masonry-css";
 import { useSelector } from "react-redux";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { addToFavorites } from "../slices/favPhotoSlice";
+import Search from "./Search";
 
 const Home = () => {
   const allPhotos = useSelector((store) => store.photos);

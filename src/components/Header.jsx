@@ -1,8 +1,13 @@
 import "./header.scss";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
+import Search from "../components/Search";
+import SearchFav from "./SearchFav";
 
 function Header() {
+  const location = useLocation();
   return (
     <div className="header-container">
       <Link to="/">
@@ -12,18 +17,17 @@ function Header() {
       </Link>
 
       <div className="header-container__search">
-        <div>
-          <input type="text" placeholder="search" />
-          <button className="header-container__button-submit" type="submit ">
-            Search
-          </button>
-        </div>
+        {location.pathname === "/" ? (
+          <Search className="header-container__search-component" />
+        ) : (
+          <SearchFav className="header-container__search-component" />
+        )}
 
         <Link to="/favorites">
           <p className="header-container__favorites">
             My
             <span>
-              <FavoriteIcon />
+              <CameraAltIcon />
             </span>
           </p>
         </Link>
